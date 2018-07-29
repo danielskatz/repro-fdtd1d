@@ -1,7 +1,4 @@
 build-essential
 curl
 git
-python-matplotlib
-python-numpy
-python-pandas
 vim
