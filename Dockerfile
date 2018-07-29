@@ -18,5 +18,6 @@ USER $NB_USER
 ENV USER $NB_USER
 COPY fdtd* /home/jovyan/work/
 COPY img /home/jovyan/work/img/
+COPY Notebook_Demonstration.ipynb /home/jovyan/work/
 
 CMD ["start-notebook.sh", "--NotebookApp.token=''"]
