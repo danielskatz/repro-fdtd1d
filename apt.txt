@@ -1,0 +1,5 @@
+build-essential
+curl
+git
+python-matplotlib
+vim
