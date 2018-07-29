@@ -19,4 +19,6 @@ ENV USER $NB_USER
 COPY fdtd* /home/jovyan/work/
 COPY img /home/jovyan/work/img/
 
+RUN /bin/bash -c 'chmod +w /home/jovyan/work/fdtd1d.c'
+
 CMD ["start-notebook.sh", "--NotebookApp.token=''"]
