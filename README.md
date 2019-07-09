@@ -1,6 +1,6 @@
 # repro-fdtd1d
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/danielskatz/repro-fdtd1d/master)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/danielskatz/repro-fdtd1d/master)
 
 - Example Jupyter notebook for the 2nd day of the [FSCI 2018](https://www.force11.org/fsci/2018) [AM8 course on reproducibility](https://www.force11.org/fsci/2018/course-abstracts#AM8)
 
