@@ -7,6 +7,7 @@
   - Notebook_Demonstration.ipynb is a demonstration notebook
   - Makes use of a [data set](https://raw.githubusercontent.com/csoderberg/test_study/master/gapminder_copy.txt)
   - Also see slides 14 - 19 of https://speakerdeck.com/jhermann/jupyterhub-and-jupyter-notebook-a-view-under-the-hood?slide=14 for some info on the relationship between notebooks and various means of using/storing them
+  - and this [image](https://zenodo.org/record/3332808/files/1728_TURI_Book%20sprint_45%20repo2docker_040619_v2_MK.jpg)
 
 - Programs and examples for the computational reproducibility day of the [FSCI 2018](https://www.force11.org/fsci/2018) [AM8 course on reproducibility](https://www.force11.org/fsci/2018/course-abstracts#AM8) and [FSCI 2019](https://www.force11.org/fsci/2019) [AM3 course on reproducibility](https://www.force11.org/fsci/2018/course-abstracts#AM3)
 
