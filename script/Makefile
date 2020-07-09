@@ -6,10 +6,9 @@ SHARPEN = bin/sharpen_image.py
 MOSAIC = bin/local_build_mosaic.py
 RAW_SOURCE_DIR=https://raw.githubusercontent.com/danielskatz/parsl-example/master/data
 
-.PHONY: all
+.PHONY: clean all
 all: proc/mosaic.jpg
 
-.PHONY: clean
 clean:
 	-rm -rf raw proc
 
