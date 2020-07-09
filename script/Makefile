@@ -9,11 +9,6 @@ RAW_SOURCE_DIR=https://raw.githubusercontent.com/danielskatz/parsl-example/maste
 .PHONY: all
 all: proc/mosaic.jpg
 
-.PHONY : variables
-variables:
-	echo $(PROC_FILES)
-	echo $(RAW_FILES)
-
 .PHONY: clean
 clean:
 	-rm -rf raw proc
