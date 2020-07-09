@@ -24,29 +24,11 @@ raw:
 proc:
 	mkdir proc
 
-raw/0001.jpg: | raw
+$(RAW_FILES): | raw
 	wget $(@:raw/%.jpg=$(RAW_SOURCE_DIR)/%.jpg) -O $@
 
-raw/0002.jpg: | raw
-	wget $(@:raw/%.jpg=$(RAW_SOURCE_DIR)/%.jpg) -O $@
-
-raw/0003.jpg: | raw
-	wget $(@:raw/%.jpg=$(RAW_SOURCE_DIR)/%.jpg) -O $@
-
-raw/0004.jpg: | raw
-	wget $(@:raw/%.jpg=$(RAW_SOURCE_DIR)/%.jpg) -O $@
-
-proc/0001_sharp.jpg: raw/0001.jpg $(SHARPEN) | proc
-	$(LANGUAGE) $(SHARPEN) $< $@
-
-proc/0002_sharp.jpg: raw/0002.jpg $(SHARPEN) | proc
-	$(LANGUAGE) $(SHARPEN) $< $@
-
-proc/0003_sharp.jpg: raw/0003.jpg $(SHARPEN) | proc
-	$(LANGUAGE) $(SHARPEN) $< $@
-
-proc/0004_sharp.jpg: raw/0004.jpg $(SHARPEN) | proc
-	$(LANGUAGE) $(SHARPEN) $< $@
+$(PROC_FILES): $(@:proc/%_sharp.jpg=raw/%.jpg) $(SHARPEN) | proc
+	$(LANGUAGE) $(SHARPEN) $(@:proc/%_sharp.jpg=raw/%.jpg) $@
 
 proc/mosaic.jpg: $(MOSAIC) $(PROC_FILES)
 	$(LANGUAGE) $(MOSAIC) 2 $@ $(PROC_FILES)
