@@ -1,6 +1,20 @@
-.PHONY: clean all
+LANGUAGE=python3
+FILE_NOS=0001 0002 0003 0004
+RAW_FILES=$(FILE_NOS:%=raw/%.jpg)
+PROC_FILES=$(FILE_NOS:%=proc/%_sharp.jpg)
+SHARPEN = bin/sharpen_image.py
+MOSAIC = bin/local_build_mosaic.py
+RAW_SOURCE_DIR=https://raw.githubusercontent.com/danielskatz/parsl-example/master/data
+
+.PHONY: all
 all: proc/mosaic.jpg
 
+.PHONY : variables
+variables:
+	echo $(PROC_FILES)
+	echo $(RAW_FILES)
+
+.PHONY: clean
 clean:
 	-rm -rf raw proc
 
@@ -11,28 +25,28 @@ proc:
 	mkdir proc
 
 raw/0001.jpg: | raw
-	cd raw ; wget https://raw.githubusercontent.com/danielskatz/parsl-example/master/data/0001.jpg
+	wget $(@:raw/%.jpg=$(RAW_SOURCE_DIR)/%.jpg) -O $@
 
 raw/0002.jpg: | raw
-	cd raw ; wget https://raw.githubusercontent.com/danielskatz/parsl-example/master/data/0002.jpg
+	wget $(@:raw/%.jpg=$(RAW_SOURCE_DIR)/%.jpg) -O $@
 
 raw/0003.jpg: | raw
-	cd raw ; wget https://raw.githubusercontent.com/danielskatz/parsl-example/master/data/0003.jpg
+	wget $(@:raw/%.jpg=$(RAW_SOURCE_DIR)/%.jpg) -O $@
 
 raw/0004.jpg: | raw
-	cd raw ; wget https://raw.githubusercontent.com/danielskatz/parsl-example/master/data/0004.jpg
+	wget $(@:raw/%.jpg=$(RAW_SOURCE_DIR)/%.jpg) -O $@
 
-proc/0001_sharp.jpg: raw/0001.jpg bin/sharpen_image.py | proc
-	python3 bin/sharpen_image.py raw/0001.jpg proc/0001_sharp.jpg
+proc/0001_sharp.jpg: raw/0001.jpg $(SHARPEN) | proc
+	$(LANGUAGE) $(SHARPEN) $< $@
 
-proc/0002_sharp.jpg: raw/0002.jpg bin/sharpen_image.py | proc
-	python3 bin/sharpen_image.py raw/0002.jpg proc/0002_sharp.jpg
+proc/0002_sharp.jpg: raw/0002.jpg $(SHARPEN) | proc
+	$(LANGUAGE) $(SHARPEN) $< $@
 
-proc/0003_sharp.jpg: raw/0003.jpg bin/sharpen_image.py | proc
-	python3 bin/sharpen_image.py raw/0003.jpg proc/0003_sharp.jpg
+proc/0003_sharp.jpg: raw/0003.jpg $(SHARPEN) | proc
+	$(LANGUAGE) $(SHARPEN) $< $@
 
-proc/0004_sharp.jpg: raw/0004.jpg bin/sharpen_image.py | proc
-	python3 bin/sharpen_image.py raw/0004.jpg proc/0004_sharp.jpg
+proc/0004_sharp.jpg: raw/0004.jpg $(SHARPEN) | proc
+	$(LANGUAGE) $(SHARPEN) $< $@
 
-proc/mosaic.jpg: bin/local_build_mosaic.py proc/0001_sharp.jpg proc/0002_sharp.jpg proc/0003_sharp.jpg proc/0004_sharp.jpg
-	cd proc; python3 ../bin/local_build_mosaic.py 2 mosaic.jpg
+proc/mosaic.jpg: $(MOSAIC) $(PROC_FILES)
+	$(LANGUAGE) $(MOSAIC) 2 $@ $(PROC_FILES)
