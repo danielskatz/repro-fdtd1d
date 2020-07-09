@@ -6,14 +6,23 @@ except ImportError:
     print("error:", sys.argv[0], "requires Pillow - install it via 'pip install Pillow'")
     sys.exit(2)
 
-outputImage = Image.new('RGB', [400, 400])
-index = 0
-for i in range(2):
-    for j in range(2):
-        inputImage = Image.open("{:04d}_sharp.jpg".format(index+1))
-        box = ((i)*200, (j)*200, (i+1)*200, (j+1)*200)
-        region = inputImage.crop(box)
-        outputImage.paste(region, box)
-        index=index+1
 
-outputImage.save("mosaic.jpg", 'JPEG')
+if len(sys.argv) != 3:
+    print("error - usage:", sys.argv[0], "input_file output_file")
+    sys.exit(2)
+
+input_filename = sys.argv[1]
+output_filename = sys.argv[2]
+
+#Read image
+try:
+    im = Image.open(input_filename)
+except OSError:
+    print("error - can't open file:", input_file)
+    sys.exit(2)
+
+#Apply a filter to the image
+im_sharp = im.filter(ImageFilter.SHARPEN)
+
+#Save the filtered image to a new file
+im_sharp.save(output_filename, 'JPEG')
