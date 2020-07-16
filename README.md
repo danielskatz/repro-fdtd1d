@@ -2,6 +2,12 @@
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/danielskatz/repro-fdtd1d/master)
 
+- [Slides](Computational_Reproducibility.pptx) for the Xth day of the [FSCI 2020](https://www.force11.org/fsci/2020)
+[W20 course: Research Reproducibility in Theory and Practice (Examples and Focus on Biological Sciences)](https://www.force11.org/fsci/2020/fsci-2020-course-abstracts#W20)
+
+  - Notebook_Demonstration.ipynb is a demonstration notebook
+  - Files in bin and script can be called by a terminal running inside Binder as described in the slides
+
 - Example Jupyter notebook for the 2nd day of the [FSCI 2018](https://www.force11.org/fsci/2018) [AM8 course on reproducibility](https://www.force11.org/fsci/2018/course-abstracts#AM8) and 2nd day of the [FSCI 2019](https://www.force11.org/fsci/2019) [AM3 course on reproducibility](https://www.force11.org/fsci/2019/course-abstracts#AM3)
 
   - Notebook_Demonstration.ipynb is a demonstration notebook
