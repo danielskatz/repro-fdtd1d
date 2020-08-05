@@ -2,7 +2,7 @@
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/danielskatz/repro-fdtd1d/master)
 
-- [Slides](Computational_Reproducibility.pptx) for the 3rd day (12 August) of the [FSCI 2020](https://www.force11.org/fsci/2020)
+- Slides ([ppt](Computational_Reproducibility.pptx), [pdf](Computational_Reproducibility.pdf)) for the 3rd day (12 August) of the [FSCI 2020](https://www.force11.org/fsci/2020)
 [W20 course: Research Reproducibility in Theory and Practice (Examples and Focus on Biological Sciences)](https://www.force11.org/fsci/2020/fsci-2020-course-abstracts#W20).
 In this repository:
 
