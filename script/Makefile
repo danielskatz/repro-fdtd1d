@@ -21,7 +21,7 @@ proc:
 $(RAW_FILES): | raw
 	wget $(@:raw/%.jpg=$(RAW_SOURCE_DIR)/%.jpg) -O $@
 
-$(PROC_FILES): $(@:proc/%_sharp.jpg=raw/%.jpg) $(SHARPEN) | proc
+$(PROC_FILES): $(@:proc/%_sharp.jpg=raw/%.jpg) $(SHARPEN) | proc $(RAW_FILES)
 	$(LANGUAGE) $(SHARPEN) $(@:proc/%_sharp.jpg=raw/%.jpg) $@
 
 proc/mosaic.jpg: $(MOSAIC) $(PROC_FILES)
