@@ -21,22 +21,7 @@ proc:
 $(RAW_FILES): | raw
 	wget $(@:raw/%.jpg=$(RAW_SOURCE_DIR)/%.jpg) -O $@
 
-# this is what I want to do, but it doesn't work right
-#$(PROC_FILES): $(@:proc/%_sharp.jpg=raw/%.jpg) $(SHARPEN) | proc
-#	$(LANGUAGE) $(SHARPEN) $(@:proc/%_sharp.jpg=raw/%.jpg) $@
-
-# so instead, for now, I am doing this more manually
-
-proc/0001_sharp.jpg: raw/0001.jpg $(SHARPEN) | proc
-	$(LANGUAGE) $(SHARPEN) $(@:proc/%_sharp.jpg=raw/%.jpg) $@
-
-proc/0002_sharp.jpg: raw/0002.jpg $(SHARPEN) | proc
-	$(LANGUAGE) $(SHARPEN) $(@:proc/%_sharp.jpg=raw/%.jpg) $@
-
-proc/0003_sharp.jpg: raw/0003.jpg $(SHARPEN) | proc
-	$(LANGUAGE) $(SHARPEN) $(@:proc/%_sharp.jpg=raw/%.jpg) $@
-
-proc/0004_sharp.jpg: raw/0004.jpg $(SHARPEN) | proc
+proc/%_sharp.jpg: raw/%.jpg $(SHARPEN) | proc
 	$(LANGUAGE) $(SHARPEN) $(@:proc/%_sharp.jpg=raw/%.jpg) $@
 
 proc/mosaic.jpg: $(MOSAIC) $(PROC_FILES)
